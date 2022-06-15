@@ -56,18 +56,15 @@ services:
     networks:
       - net
 
-  nginx:
-    build:
-      context: nginx
-    image: firefart/requesttracker:nginx-latest
+  caddy:
+    image: caddy:latest
     ports:
+      - "0.0.0.0:80:80"
       - "0.0.0.0:443:443"
     depends_on:
       - rt
     volumes:
-      - ./nginx/certs/:/certs/:ro
-      - ./nginx/startup-scripts/:/docker-entrypoint.d/:ro
-      - /etc/localtime:/etc/localtime:ro
+      - ./caddy/Caddyfile:/etc/caddy/Caddyfile
     networks:
       - net
 

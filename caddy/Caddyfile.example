@@ -1,0 +1,9 @@
+{
+    auto_https disable_redirects
+}
+
+
+http:// https:// {
+    # tls internal
+    reverse_proxy rt:9000
+}
